@@ -1,0 +1,17 @@
+1.其中SQL语句中的要查找的值要用?代替，方便后面设置
+
+  String sql = "select * from table_user where userName=? and password=?";
+
+2.然后创建SQL语句的游标对象
+
+  psmt，PreparedStatement psmt = connection.prepareStatement(sql);
+
+3.设置SQL语句中的变量值，第几个?为几，索引就是几，没有0
+
+  psmt.setString(1, user.getUserName());
+
+4.执行查询语句，并返回ResultSet对象用于保存查询结果
+
+  ResultSet resultSet = psmt.executeQuery();
+
+5.然后根据需求进行其他操作
